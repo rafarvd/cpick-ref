@@ -30,8 +30,8 @@ const cpick = async () => {
     await page.goto(url, { waitUntil: "networkidle2" });
 
     await page.evaluate(() => {
-      document.body.style.zoom = "45%";
-      window.scrollTo(0, document.body.scrollHeight);
+      document.body.style.zoom = "30%";
+     // window.scrollTo(0, document.body.scrollHeight);
     });
 
     await new Promise((r) => setTimeout(r, 5000));
