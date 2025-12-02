@@ -32,7 +32,7 @@ const cpick = async () => {
     await page.evaluate(() => {
       // document.body.style.zoom = "45%";
       // window.scrollTo(0, document.body.scrollHeight);
-       const turnstile = document.querySelector("#cf_turnstile");
+       const turnstile = document.querySelector("#faucet_countdown_clock");
          // document.querySelector("#cf_turnstile").click();
           if (turnstile) {
           turnstile.scrollIntoView({ behavior: "smooth", block: "center" });
