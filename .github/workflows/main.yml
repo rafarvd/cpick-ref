@@ -59,8 +59,8 @@ jobs:
           LOGIN: ${{ secrets.LOGIN }}
           SENHA: ${{ secrets.SENHA }}
         timeout-minutes: 10
-        # run: xvfb-run --auto-servernum -- node --trace-warnings cpick.js
-        run: node cpick.js
+        run: xvfb-run --auto-servernum -- node --trace-warnings cpick.js
+        # run: node cpick.js
 
       - name: Upload da captura
         uses: actions/upload-artifact@v4
