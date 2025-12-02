@@ -30,17 +30,17 @@ const cpick = async () => {
     await page.goto(url, { waitUntil: "networkidle2" });
 
     await page.evaluate(() => {
-      // document.body.style.zoom = "45%";
+      document.body.style.zoom = "30%";
       // window.scrollTo(0, document.body.scrollHeight);
-       const turnstile = document.querySelector("#faucet_countdown_clock");
+      // const turnstile = document.querySelector("#faucet_countdown_clock");
          // document.querySelector("#cf_turnstile").click();
-          if (turnstile) {
-          turnstile.scrollIntoView({ behavior: "smooth", block: "center" });
-          new Promise((r) => setTimeout(r, 2000));
-           }
+          //if (turnstile) {
+         // turnstile.scrollIntoView({ behavior: "smooth", block: "center" });
+         // new Promise((r) => setTimeout(r, 2000));
+         //  }
     });
 
-    await new Promise((r) => setTimeout(r, 5000));
+    await new Promise((r) => setTimeout(r, 10000));
 
     try {
       await page.click("#cf_turnstile");
@@ -51,6 +51,7 @@ const cpick = async () => {
     while (!token && Date.now() - startDate < 30000) {
       token = await page.evaluate(() => {
         try {
+          document.querySelector("#cf_turnstile").click();
           let item = document.querySelector(
             '[name="cf-turnstile-response"]'
           ).value;
@@ -62,7 +63,7 @@ const cpick = async () => {
       await new Promise((r) => setTimeout(r, 1000));
     }
 
-    await new Promise((r) => setTimeout(r, 8000));
+    await new Promise((r) => setTimeout(r, 5000));
 
     console.log(token)
 
