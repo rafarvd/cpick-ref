@@ -122,13 +122,17 @@ const cpick = async () => {
 
     await page.reload({ waitUntil: "networkidle2" });
     await new Promise((r) => setTimeout(r, 5000));
-    const clock = document.querySelector("#faucet_countdown_clock");
-    if (clock) {
-      clock.scrollIntoView({ behavior: "smooth", block: "center" });
-      new Promise((r) => setTimeout(r, 2000));
-    }
+    
+    await page.evaluate(() => {
+      const clock = document.querySelector("#faucet_countdown_clock");
+      if (clock) {
+         clock.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    
     await new Promise((r) => setTimeout(r, 5000));
     await page.screenshot({ path: "screen.png" });
+    
   } catch (error) {
     await page.screenshot({ path: "screen.png" });
     console.error(`Erro interno do servidor: ${error.message}`);
