@@ -30,14 +30,8 @@ const cpick = async () => {
     await page.goto(url, { waitUntil: "networkidle2" });
 
     await page.evaluate(() => {
-      document.body.style.zoom = "30%";
-      // window.scrollTo(0, document.body.scrollHeight);
-      // const turnstile = document.querySelector("#faucet_countdown_clock");
-         // document.querySelector("#cf_turnstile").click();
-          //if (turnstile) {
-         // turnstile.scrollIntoView({ behavior: "smooth", block: "center" });
-         // new Promise((r) => setTimeout(r, 2000));
-         //  }
+      document.body.style.zoom = "45%";
+      window.scrollTo(0, document.body.scrollHeight);
     });
 
     await new Promise((r) => setTimeout(r, 10000));
