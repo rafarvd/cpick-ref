@@ -20,27 +20,27 @@ jobs:
         with:
           node-version: "20"
 
-      # - name: Setup Chrome
-      #   uses: browser-actions/setup-chrome@v2
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
 
-      - name: Instalar dependências do sistema
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            wget \
-            gnupg \
-            ca-certificates \
-            apt-transport-https \
-            xvfb \
-            && sudo rm -rf /var/lib/apt/lists/*
+      # - name: Instalar dependências do sistema
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y \
+      #       wget \
+      #       gnupg \
+      #       ca-certificates \
+      #       apt-transport-https \
+      #       xvfb \
+      #       && sudo rm -rf /var/lib/apt/lists/*
 
-      - name: Instalar Google Chrome
-        run: |
-          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
-          && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list \
-          && sudo apt-get update \
-          && sudo apt-get install -y google-chrome-stable \
-          && sudo rm -rf /var/lib/apt/lists/*
+      # - name: Instalar Google Chrome
+      #   run: |
+      #     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - \
+      #     && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google.list \
+      #     && sudo apt-get update \
+      #     && sudo apt-get install -y google-chrome-stable \
+      #     && sudo rm -rf /var/lib/apt/lists/*
 
       # - name: Instalar dependências do Node.js
       #   run: npm update && npm install
@@ -68,22 +68,3 @@ jobs:
         with:
           name: screenshot
           path: screen.png
-
-      # - name: Atualiza screen.png
-      #   env:
-      #     SENHA_PDF: ${{ secrets.SENHA_PDF }}
-      #   run: |
-      #     sudo apt-get update && sudo apt-get install -y img2pdf qpdf
-      #     img2pdf screen.png -o temp.pdf && qpdf --encrypt $SENHA_PDF $SENHA_PDF 256 -- temp.pdf screen.pdf && rm temp.pdf
-      #     git config --global user.name "github-actions"
-      #     git config --global user.email "actions@github.com"
-      #     git add screen.pdf || echo "Nada para adicionar"
-      #     git commit -m "Atualiza screen.pdf" || echo "Nada para commitar"
-      #     git push --quiet || echo "Falha no push, provavelmente conflito"
-
-      # - name: Fazer upload da captura de tela
-      #   if: success() || failure()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: screenshot
-      #     path: screen.pdf
