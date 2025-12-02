@@ -58,6 +58,8 @@ const cpick = async () => {
       await new Promise((r) => setTimeout(r, 1000));
     }
 
+    console.log(token)
+
     await new Promise((r) => setTimeout(r, 2000));
 
     let botao = false;
