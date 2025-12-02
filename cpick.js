@@ -30,11 +30,15 @@ const cpick = async () => {
     await page.goto(url, { waitUntil: "networkidle2" });
 
     await page.evaluate(() => {
-      document.body.style.zoom = "30%";
-      // window.scrollTo(0, document.body.scrollHeight);
+      document.body.style.zoom = "45%";
+      window.scrollTo(0, document.body.scrollHeight);
     });
 
     await new Promise((r) => setTimeout(r, 5000));
+
+    try {
+      await page.click("#cf_turnstile");
+    } catch(e) {}
 
     let token = null;
     let startDate = Date.now();
@@ -42,7 +46,7 @@ const cpick = async () => {
       token = await page.evaluate(() => {
         try {
           // const turnstile = document.querySelector("#cf_turnstile");
-          document.querySelector("#cf_turnstile").click();
+         // document.querySelector("#cf_turnstile").click();
           // if (turnstile) {
           //   turnstile.scrollIntoView({ behavior: "smooth", block: "center" });
           //   new Promise((r) => setTimeout(r, 2000));
@@ -58,7 +62,7 @@ const cpick = async () => {
       await new Promise((r) => setTimeout(r, 1000));
     }
 
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 8000));
 
     console.log(token)
 
