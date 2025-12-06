@@ -32,6 +32,10 @@ const cpick = async () => {
     await page.evaluate(() => {
       document.body.style.zoom = "45%";
       window.scrollTo(0, document.body.scrollHeight);
+      const turnstile = document.querySelector("#cf_turnstile");
+      if (turnstile) {
+        turnstile.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
 
     await new Promise((r) => setTimeout(r, 10000));
