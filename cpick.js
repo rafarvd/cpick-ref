@@ -132,7 +132,7 @@ const cpick = async () => {
     console.error(`Erro interno do servidor: ${error.message}`);
     await browser.close();
     await new Promise((r) => setTimeout(r, 5000));
-    await cpick();
+   // await cpick();
   } finally {
     await browser.close();
   }
